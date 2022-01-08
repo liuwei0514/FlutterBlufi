@@ -155,6 +155,9 @@ public class BlufiPlugin implements FlutterPlugin, ActivityAware, MethodCallHand
     else if (call.method.equals("requestCloseConnection")) {
       disconnectGatt();
     }
+    else if (call.method.equals("close")) {
+      close();
+    }
     else if (call.method.equals("negotiateSecurity")) {
       negotiateSecurity();
     }
@@ -245,6 +248,11 @@ public class BlufiPlugin implements FlutterPlugin, ActivityAware, MethodCallHand
   private void disconnectGatt() {
     if (mBlufiClient != null) {
       mBlufiClient.requestCloseConnection();
+    }
+  }
+  private void close() {
+    if (mBlufiClient != null) {
+      mBlufiClient.close();
     }
   }
 
